@@ -6,8 +6,8 @@ como el trabajo compartido resulta en mejor productividad.
 Para correr el proyecto se debe bajar la carpeta completa, indicar en la variable "path" la ruta a partir de la cual empieza la búsqueda,
 y en la variable "archivo" el nombre del archivo a buscar: 
 
-// Indica el path a partir del cual empieza la búsqueda - atento al / o \ del sistema operativo
+// Indica el path a partir del cual empieza la búsqueda - atento al / o \ del sistema operativo \n
 `String path = "C:\\Users\\Valentino\\Desktop";`
 
-// Indica el archivo a buscar (editable)
+// Indica el archivo a buscar (editable) \n
 `String archivo = "tesoro.txt";`
