@@ -7,7 +7,7 @@ Para correr el proyecto se debe bajar la carpeta completa, indicar en la variabl
 y en la variable "archivo" el nombre del archivo a buscar: 
 
 // Indica el path a partir del cual empieza la búsqueda - atento al / o \ del sistema operativo
-String path = "C:\\Users\\Valentino\\Desktop";
+`String path = "C:\\Users\\Valentino\\Desktop";`
 
 // Indica el archivo a buscar (editable)
-String archivo = "tesoro.txt";
+`String archivo = "tesoro.txt";`
