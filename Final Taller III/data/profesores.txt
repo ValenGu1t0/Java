@@ -1,7 +1,0 @@
-Joaquin,Rabas,27283921
-Pablo,Ramis,24675356
-Lucas,Salvador,22452953
-Fernando,Villera,29675356
-Alex,Lozano,23452953
-Regina,Muzzio,22672135
-Lucas,Diamante,21452395
