@@ -1,5 +1,0 @@
-12345678,Matemática
-12345678,Física
-12345678,Programación
-41865043,Taller
-12345678,Taller-III
