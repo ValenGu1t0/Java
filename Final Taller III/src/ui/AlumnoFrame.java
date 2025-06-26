@@ -66,10 +66,19 @@ public class AlumnoFrame extends JFrame {
     // ---------------------------------------------------------------------------------------- //
 
     private void inscribirse() {
-
         String materiaSeleccionada = (String) comboMaterias.getSelectedItem();
 
         if (materiaSeleccionada != null) {
+            // Verificar si ya está inscripto
+            List<Inscripcion> inscripciones = InscripcionManager.leerInscripciones();
+            for (Inscripcion i : inscripciones) {
+                if (i.getDniAlumno().equals(alumno.getDni()) && i.getNombreMateria().equals(materiaSeleccionada)) {
+                    JOptionPane.showMessageDialog(this, "Ya estás inscripto en esa materia.");
+                    return;
+                }
+            }
+
+            // Si no está inscripto, lo guarda
             Inscripcion inscripcion = new Inscripcion(alumno.getDni(), materiaSeleccionada);
             InscripcionManager.guardarInscripcion(inscripcion);
             JOptionPane.showMessageDialog(this, "Inscripción exitosa a " + materiaSeleccionada);
