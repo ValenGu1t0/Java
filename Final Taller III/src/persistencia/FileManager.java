@@ -38,5 +38,19 @@ public class FileManager {
         }
         return lineas;
     }
+
+    // ---------------------------------------------------------------- //
+
+    public static void sobrescribirArchivo(String rutaArchivo, List<?> lineas) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
+            for (Object linea : lineas) {
+                writer.write(linea.toString());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al sobrescribir en " + rutaArchivo + ": " + e.getMessage());
+        }
+    }
+
 }
 

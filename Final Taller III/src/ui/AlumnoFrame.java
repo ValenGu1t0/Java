@@ -16,6 +16,8 @@ public class AlumnoFrame extends JFrame {
     private JComboBox<String> comboMaterias;
     private JButton inscribirseBtn;
     private JTextArea areaInscripciones;
+    private JComboBox<String> comboInscriptas;
+
 
     public AlumnoFrame(Alumno alumno) {
 
@@ -34,12 +36,9 @@ public class AlumnoFrame extends JFrame {
     // ---------------------------------------------------------------------------------------- //
 
     private void initComponents() {
-
+        // Panel de inscripción
         comboMaterias = new JComboBox<>();
         inscribirseBtn = new JButton("Inscribirse");
-        areaInscripciones = new JTextArea();
-        areaInscripciones.setEditable(false);
-
         inscribirseBtn.addActionListener(e -> inscribirse());
 
         JPanel panelTop = new JPanel(new BorderLayout());
@@ -47,10 +46,27 @@ public class AlumnoFrame extends JFrame {
         panelTop.add(comboMaterias, BorderLayout.CENTER);
         panelTop.add(inscribirseBtn, BorderLayout.EAST);
 
+        // Panel de eliminación
+        comboInscriptas = new JComboBox<>();
+        JButton eliminarBtn = new JButton("Eliminar inscripción");
+        eliminarBtn.addActionListener(e -> eliminarInscripcion());
+
+        JPanel panelMiddle = new JPanel(new BorderLayout());
+        panelMiddle.add(new JLabel("Materias inscriptas (selección):"), BorderLayout.NORTH);
+        panelMiddle.add(comboInscriptas, BorderLayout.CENTER);
+        panelMiddle.add(eliminarBtn, BorderLayout.EAST);
+
+        // Área de texto para mostrar inscripciones
+        areaInscripciones = new JTextArea();
+        areaInscripciones.setEditable(false);
+
+        // Distribución en la ventana
         setLayout(new BorderLayout());
         add(panelTop, BorderLayout.NORTH);
         add(new JScrollPane(areaInscripciones), BorderLayout.CENTER);
+        add(panelMiddle, BorderLayout.SOUTH);
     }
+
 
     // ---------------------------------------------------------------------------------------- //
 
@@ -69,7 +85,7 @@ public class AlumnoFrame extends JFrame {
         String materiaSeleccionada = (String) comboMaterias.getSelectedItem();
 
         if (materiaSeleccionada != null) {
-            // Verificar si ya está inscripto
+            // Verificamos si ya está inscripto
             List<Inscripcion> inscripciones = InscripcionManager.leerInscripciones();
             for (Inscripcion i : inscripciones) {
                 if (i.getDniAlumno().equals(alumno.getDni()) && i.getNombreMateria().equals(materiaSeleccionada)) {
@@ -89,13 +105,28 @@ public class AlumnoFrame extends JFrame {
     // ---------------------------------------------------------------------------------------- //
 
     private void mostrarInscripciones() {
-
         List<Inscripcion> inscripciones = InscripcionManager.leerInscripciones();
         areaInscripciones.setText("Materias inscriptas:\n");
+        comboInscriptas.removeAllItems();
 
         for (Inscripcion i : inscripciones) {
             if (i.getDniAlumno().equals(alumno.getDni())) {
                 areaInscripciones.append("- " + i.getNombreMateria() + "\n");
+                comboInscriptas.addItem(i.getNombreMateria());
+            }
+        }
+    }
+
+    // ---------------------------------------------------------------------------------------- //
+
+    private void eliminarInscripcion() {
+        String materiaSeleccionada = (String) comboInscriptas.getSelectedItem();
+        if (materiaSeleccionada != null) {
+            int confirm = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas eliminar la inscripción a " + materiaSeleccionada + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                InscripcionManager.eliminarInscripcion(alumno.getDni(), materiaSeleccionada);
+                JOptionPane.showMessageDialog(this, "Inscripción eliminada.");
+                mostrarInscripciones();
             }
         }
     }
