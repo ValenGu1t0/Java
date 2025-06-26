@@ -1,7 +1,6 @@
 12345678,Matemática
 12345678,Física
-12345678,Programación
-41865043,Taller
+12345678,Programación-I
 12345678,Taller-III
 41731432,Matemática
 41731432,Taller-III
@@ -12,3 +11,5 @@
 42313443,Física
 42313443,Arquitectura-I
 42313443,Física
+41865043,Taller-III
+41865043,Arquitectura-I
