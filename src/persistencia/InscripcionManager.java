@@ -42,4 +42,20 @@ public class InscripcionManager {
         }
         return resultado;
     }
+
+    // Permite eliminar una materia desde el panel de alumno
+    public static void eliminarInscripcion(String dniAlumno, String nombreMateria) {
+        List<Inscripcion> inscripciones = leerInscripciones();
+        List<Inscripcion> actualizadas = new ArrayList<>();
+
+        for (Inscripcion i : inscripciones) {
+            if (!(i.getDniAlumno().equals(dniAlumno) && i.getNombreMateria().equals(nombreMateria))) {
+                actualizadas.add(i);
+            }
+        }
+
+        // Sobrescribe el archivo con las inscripciones actualizadas
+        FileManager.sobrescribirArchivo(RUTA_ARCHIVO, actualizadas);
+    }
+
 }
