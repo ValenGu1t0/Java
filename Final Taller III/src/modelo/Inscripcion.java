@@ -27,4 +27,3 @@ public class Inscripcion {
         return dniAlumno + "," + nombreMateria;
     }
 }
-

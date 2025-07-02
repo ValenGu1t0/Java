@@ -7,6 +7,7 @@ import java.util.List;
 
 public class AlumnoManager {
 
+    // Import del alumnos.txt
     private static final String RUTA_ARCHIVO = "data/alumnos.txt";
 
 
@@ -26,6 +27,7 @@ public class AlumnoManager {
         for (String linea : lineas) {
             String[] partes = linea.split(",");
 
+            // Solo aquellos Alumnos que tengan los datos completos
             if (partes.length == 3) {
                 String nombre = partes[0];
                 String apellido = partes[1];
@@ -38,7 +40,7 @@ public class AlumnoManager {
 
     // ---------------------------------------------------------------- //
 
-    // Metodo que busca alumno por DNI
+    // Metodo que busca alumno por DNI - necesario para el login
     public static Alumno buscarAlumnoPorDni(String dni) {
 
         List<Alumno> alumnos = leerAlumnos();

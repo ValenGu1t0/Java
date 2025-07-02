@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Leer alumnos
+        // Leemos alumnos
         List<Alumno> alumnos = AlumnoManager.leerAlumnos();
 
         // Listado de alumnos por consola
@@ -16,7 +16,7 @@ public class Main {
             System.out.println(e.getNombre() + " " + e.getApellido() + " - DNI: " + e.getDni());
         }
 
-        // Interfaz gráfica
+        // Traemos la interfaz gráfica
         javax.swing.SwingUtilities.invokeLater(() -> {
             LoginFrame loginFrame = new LoginFrame();
             loginFrame.setVisible(true);

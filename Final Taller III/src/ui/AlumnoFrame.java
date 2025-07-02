@@ -36,6 +36,7 @@ public class AlumnoFrame extends JFrame {
     // ---------------------------------------------------------------------------------------- //
 
     private void initComponents() {
+
         // Panel de inscripción
         comboMaterias = new JComboBox<>();
         inscribirseBtn = new JButton("Inscribirse");
@@ -67,7 +68,6 @@ public class AlumnoFrame extends JFrame {
         add(panelMiddle, BorderLayout.SOUTH);
     }
 
-
     // ---------------------------------------------------------------------------------------- //
 
     private void cargarMaterias() {
@@ -81,20 +81,33 @@ public class AlumnoFrame extends JFrame {
 
     // ---------------------------------------------------------------------------------------- //
 
+    // Permite al alumno inscribirse a una materia siempre y cuando haya cupo
     private void inscribirse() {
+
         String materiaSeleccionada = (String) comboMaterias.getSelectedItem();
 
         if (materiaSeleccionada != null) {
             // Verificamos si ya está inscripto
             List<Inscripcion> inscripciones = InscripcionManager.leerInscripciones();
             for (Inscripcion i : inscripciones) {
-                if (i.getDniAlumno().equals(alumno.getDni()) && i.getNombreMateria().equals(materiaSeleccionada)) {
+                if (i.getDniAlumno().equals(alumno.getDni()) &&
+                        i.getNombreMateria().equals(materiaSeleccionada)) {
                     JOptionPane.showMessageDialog(this, "Ya estás inscripto en esa materia.");
                     return;
                 }
             }
 
-            // Si no está inscripto, lo guarda
+            // Verificar cupo máximo
+            int cupoActual = InscripcionManager.contarInscriptos(materiaSeleccionada);
+
+            if (cupoActual >= 5) {
+                JOptionPane.showMessageDialog(this,
+                        "No se puede inscribir. El cupo máximo de la materia "
+                                + materiaSeleccionada + " ya está completo.");
+                return;
+            }
+
+            // Si pasa ambos controles, se inscribe
             Inscripcion inscripcion = new Inscripcion(alumno.getDni(), materiaSeleccionada);
             InscripcionManager.guardarInscripcion(inscripcion);
             JOptionPane.showMessageDialog(this, "Inscripción exitosa a " + materiaSeleccionada);
@@ -105,6 +118,7 @@ public class AlumnoFrame extends JFrame {
     // ---------------------------------------------------------------------------------------- //
 
     private void mostrarInscripciones() {
+
         List<Inscripcion> inscripciones = InscripcionManager.leerInscripciones();
         areaInscripciones.setText("Materias inscriptas:\n");
         comboInscriptas.removeAllItems();
@@ -120,7 +134,9 @@ public class AlumnoFrame extends JFrame {
     // ---------------------------------------------------------------------------------------- //
 
     private void eliminarInscripcion() {
+
         String materiaSeleccionada = (String) comboInscriptas.getSelectedItem();
+
         if (materiaSeleccionada != null) {
             int confirm = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas eliminar la inscripción a " + materiaSeleccionada + "?", "Confirmar", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {

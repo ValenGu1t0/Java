@@ -16,10 +16,10 @@ public class LoginFrame extends JFrame {
 
     public LoginFrame() {
 
-        setTitle("Login - Sistema de Gestión");
+        setTitle("Login - Sistema de Gestión del IPS");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
-        setLocationRelativeTo(null); // Centra la ventana
+        setLocationRelativeTo(null);
 
         initComponents();
     }
@@ -46,10 +46,9 @@ public class LoginFrame extends JFrame {
         add(panel);
     }
 
-
     // ---------------------------------------------------------------------------------------- //
 
-
+    // Ventana que compara DNI y permite el acceso
     private void loginComoAlumno() {
 
         String dni = dniField.getText().trim();
@@ -65,7 +64,7 @@ public class LoginFrame extends JFrame {
 
     // ---------------------------------------------------------------------------------------- //
 
-
+    // Lo mismo para profesores
     private void loginComoProfesor() {
 
         String dni = dniField.getText().trim();
@@ -81,4 +80,3 @@ public class LoginFrame extends JFrame {
     }
 
 }
-

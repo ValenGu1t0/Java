@@ -6,4 +6,3 @@ public interface Humano {
     String getApellido();
     String getDni();
 }
-

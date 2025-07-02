@@ -8,12 +8,7 @@ public class MateriaManager {
 
     private static final String RUTA_ARCHIVO = "data/materias.txt";
 
-    /* Por si pinta agregar materias manualmente
-    public static void guardarMateria(Materia materia) {
-
-        FileManager.guardarLinea(RUTA_ARCHIVO, materia.toString());
-    }
-    */
+    // ---------------------------------------------------------------- //
 
     public static List<Materia> leerMaterias() {
 

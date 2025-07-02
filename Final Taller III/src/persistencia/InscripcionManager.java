@@ -12,6 +12,8 @@ public class InscripcionManager {
         FileManager.guardarLinea(RUTA_ARCHIVO, inscripcion.toString());
     }
 
+    // ---------------------------------------------------------------- //
+
     public static List<Inscripcion> leerInscripciones() {
 
         List<Inscripcion> inscripciones = new ArrayList<>();
@@ -30,18 +32,7 @@ public class InscripcionManager {
         return inscripciones;
     }
 
-    public static List<Inscripcion> obtenerInscripcionesPorAlumno(String alumnoDni) {
-
-        List<Inscripcion> resultado = new ArrayList<>();
-
-        for (Inscripcion i : leerInscripciones()) {
-
-            if (i.getDniAlumno().equals(alumnoDni)) {
-                resultado.add(i);
-            }
-        }
-        return resultado;
-    }
+    // ---------------------------------------------------------------- //
 
     // Permite eliminar una materia desde el panel de alumno
     public static void eliminarInscripcion(String dniAlumno, String nombreMateria) {
@@ -56,6 +47,20 @@ public class InscripcionManager {
 
         // Sobrescribe el archivo con las inscripciones actualizadas
         FileManager.sobrescribirArchivo(RUTA_ARCHIVO, actualizadas);
+    }
+
+    // ---------------------------------------------------------------- //
+
+    // Metodo para limitar las inscripciones
+    public static int contarInscriptos(String nombreMateria) {
+        int count = 0;
+        List<Inscripcion> inscripciones = leerInscripciones();
+        for (Inscripcion insc : inscripciones) {
+            if (insc.getNombreMateria().equals(nombreMateria)) {
+                count++;
+            }
+        }
+        return count;
     }
 
 }

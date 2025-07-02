@@ -4,7 +4,7 @@ public class Materia {
 
     private String nombre;
     private String codigo;
-    private String dniProfesor;     // dni del profe que la imparte
+    private String dniProfesor;
 
     public Materia(String nombre, String codigo, String dniProfesor) {
 

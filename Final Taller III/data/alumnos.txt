@@ -3,3 +3,7 @@ Luisa,Perez,41731432
 Valentino,Privitera,41865043
 Marta,Rodriguez,42313443
 Lucas,Gómez,12345678
+Mauro,Icardi,40123846
+Maria,Roca,41928361
+Tiago,Renais,39124023
+Malena,Lozano,42054421

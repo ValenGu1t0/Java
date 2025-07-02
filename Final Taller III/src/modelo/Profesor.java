@@ -33,4 +33,3 @@ public class Profesor implements Humano {
         return dni + ";" + nombre + ";" + apellido;
     }
 }
-

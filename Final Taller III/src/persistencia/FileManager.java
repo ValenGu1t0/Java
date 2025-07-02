@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FileManager {
 
-    // Guarda una línea (ej: un alumno convertido en string) al final del archivo
+    // Guarda una línea string al final del archivo
     public static void guardarLinea(String rutaArchivo, String linea) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
