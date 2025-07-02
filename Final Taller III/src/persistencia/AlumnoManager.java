@@ -11,7 +11,7 @@ public class AlumnoManager {
     private static final String RUTA_ARCHIVO = "data/alumnos.txt";
 
 
-    // Guarda un alumno nuevo en alumnos.txt
+    // Guarda un alumno en alumnos.txt
     public static void guardarAlumno(Alumno alumno) {
         FileManager.guardarLinea(RUTA_ARCHIVO, alumno.toString());
     }

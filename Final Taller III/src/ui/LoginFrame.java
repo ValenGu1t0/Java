@@ -56,7 +56,7 @@ public class LoginFrame extends JFrame {
 
         if (alumno != null) {
             JOptionPane.showMessageDialog(this, "¡Bienvenido, " + alumno.getNombre() + "!");
-            new AlumnoFrame(alumno).setVisible(true); // 👈 Agrega esto
+            new AlumnoFrame(alumno).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Alumno no encontrado.");
         }

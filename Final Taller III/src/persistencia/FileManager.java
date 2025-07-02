@@ -4,8 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Todo lo relacionado con manejo de archivos
-
+// Manager para Files con todos los métodos base para los demas manager
 public class FileManager {
 
     // Guarda una línea string al final del archivo
@@ -28,6 +27,7 @@ public class FileManager {
         List<String> lineas = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+
             String linea;
             while ((linea = reader.readLine()) != null) {
                 lineas.add(linea);
@@ -41,7 +41,9 @@ public class FileManager {
 
     // ---------------------------------------------------------------- //
 
+    // Reescribe la nueva version del archivo que lo invoca con los cambios efectuados
     public static void sobrescribirArchivo(String rutaArchivo, List<?> lineas) {
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             for (Object linea : lineas) {
                 writer.write(linea.toString());
@@ -51,6 +53,4 @@ public class FileManager {
             System.out.println("Error al sobrescribir en " + rutaArchivo + ": " + e.getMessage());
         }
     }
-
 }
-

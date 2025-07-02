@@ -87,8 +87,10 @@ public class AlumnoFrame extends JFrame {
         String materiaSeleccionada = (String) comboMaterias.getSelectedItem();
 
         if (materiaSeleccionada != null) {
+
             // Verificamos si ya está inscripto
             List<Inscripcion> inscripciones = InscripcionManager.leerInscripciones();
+
             for (Inscripcion i : inscripciones) {
                 if (i.getDniAlumno().equals(alumno.getDni()) &&
                         i.getNombreMateria().equals(materiaSeleccionada)) {

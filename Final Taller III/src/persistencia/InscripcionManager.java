@@ -8,6 +8,7 @@ public class InscripcionManager {
 
     private static final String RUTA_ARCHIVO = "data/inscripciones.txt";
 
+    // Guarda una nueva inscripción
     public static void guardarInscripcion(Inscripcion inscripcion) {
         FileManager.guardarLinea(RUTA_ARCHIVO, inscripcion.toString());
     }
@@ -45,7 +46,7 @@ public class InscripcionManager {
             }
         }
 
-        // Sobrescribe el archivo con las inscripciones actualizadas
+        // Llama al metodo sobrescribirArchivo con el nuevo contenido
         FileManager.sobrescribirArchivo(RUTA_ARCHIVO, actualizadas);
     }
 
@@ -53,8 +54,11 @@ public class InscripcionManager {
 
     // Metodo para limitar las inscripciones
     public static int contarInscriptos(String nombreMateria) {
+
         int count = 0;
+
         List<Inscripcion> inscripciones = leerInscripciones();
+
         for (Inscripcion insc : inscripciones) {
             if (insc.getNombreMateria().equals(nombreMateria)) {
                 count++;
@@ -62,5 +66,4 @@ public class InscripcionManager {
         }
         return count;
     }
-
 }
